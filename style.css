@@ -2931,7 +2931,21 @@ body.dark-mode {
         justify-content: center;
         z-index: 1001;
         cursor: pointer;
-        backdrop-filter: blur(5px);
         box-shadow: 0 0 10px rgba(0, 245, 212, 0.3);
+    }
+
+    /* Hero Stat Fix: Ensure text stays on one line */
+    .hero-stat-label {
+        white-space: nowrap !important;
+        font-size: 0.9rem;
+        /* Adjust if needed */
+    }
+
+    .hero-stat {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        /* Ensure spacing between value and label if they are inline */
+        flex-wrap: nowrap;
     }
 }
