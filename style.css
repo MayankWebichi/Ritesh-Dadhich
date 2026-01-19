@@ -1,0 +1,1108 @@
+/* =========================================
+   THE PARALLAX ARCHIVE - CINEMATIC MEDICAL EDITION
+   ========================================= */
+
+:root {
+    /* Theme: Midnight & Bioluminescence */
+    --deep-void: #020b14;
+    --midnight-blue: #0A1929;
+    --biolum-cyan: #00f5d4;
+    --medical-white: #e0fbfc;
+    --alert-crimson: #ff0055;
+    --glass-panel: rgba(10, 25, 41, 0.7);
+    --glass-border: rgba(0, 245, 212, 0.2);
+
+    /* Layout Constants */
+    --safe-margin: 5vw;
+    --nav-height: 80px;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--deep-void);
+    color: var(--medical-white);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+    /* Custom cursor only */
+}
+
+/* =========================================
+   1. PRELOADER
+   ========================================= */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--deep-void);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease;
+}
+
+.loader-content {
+    text-align: center;
+    width: 300px;
+}
+
+.loader-logo {
+    width: 80px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px var(--biolum-cyan));
+    animation: heartbeat 1.5s infinite;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--biolum-cyan);
+    box-shadow: 0 0 10px var(--biolum-cyan);
+    transition: width 0.1s linear;
+}
+
+.loading-text {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--biolum-cyan);
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.1);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.1);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   2. CUSTOM CURSOR
+   ========================================= */
+.cursor-dot,
+.cursor-dot-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--biolum-cyan);
+    box-shadow: 0 0 10px var(--biolum-cyan);
+}
+
+.cursor-dot-outline {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(0, 245, 212, 0.5);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* =========================================
+   3. CANVAS SEQUENCE
+   ========================================= */
+#scroll-sequence {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    object-fit: cover;
+}
+
+/* =========================================
+   4. NAVIGATION
+   ========================================= */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: linear-gradient(to bottom, rgba(2, 11, 20, 0.9), transparent);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.nav-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+}
+
+.brand-logo {
+    width: 40px;
+    height: auto;
+    filter: drop-shadow(0 0 5px var(--biolum-cyan));
+}
+
+.brand-name {
+    font-family: 'Cinzel', serif;
+    color: var(--medical-white);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--medical-white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--biolum-cyan);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* =========================================
+   5. LAYOUT & SECTIONS
+   ========================================= */
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    /* No minimal height check here, driven by spacers */
+}
+
+.scrolly-section {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    padding: var(--nav-height) var(--safe-margin);
+    width: 100%;
+}
+
+/* STRICT ZONES */
+.safe-zone-left {
+    position: absolute;
+    left: var(--safe-margin);
+    top: 25%;
+    width: 30vw;
+    z-index: 10;
+}
+
+.safe-zone-right {
+    position: absolute;
+    right: var(--safe-margin);
+    width: 30vw;
+    z-index: 10;
+    text-align: right;
+}
+
+.bottom-align {
+    top: auto;
+    bottom: 15vh;
+}
+
+/* TYPOGRAPHY - HERO */
+.editorial-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 8vw, 120px);
+    font-weight: 800;
+    line-height: 0.9;
+    color: var(--medical-white);
+    text-shadow: 0 0 20px rgba(0, 245, 212, 0.3);
+}
+
+.outline-text {
+    -webkit-text-stroke: 2px var(--medical-white);
+    color: transparent;
+}
+
+.editorial-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 8vw, 120px);
+    font-weight: 800;
+    line-height: 0.9;
+    opacity: 0.8;
+}
+
+.cinematic-desc {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    border-right: 2px solid var(--biolum-cyan);
+    padding-right: 20px;
+}
+
+.highlight-cyan {
+    color: var(--biolum-cyan);
+    text-shadow: 0 0 8px rgba(0, 245, 212, 0.6);
+}
+
+/* HERO ANIMATIONS */
+.glitch-text {
+    position: relative;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -1px 0 var(--alert-crimson);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -1px 0 var(--biolum-cyan);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(13px, 9999px, 86px, 0);
+    }
+
+    20% {
+        clip: rect(89px, 9999px, 13px, 0);
+    }
+
+    40% {
+        clip: rect(4px, 9999px, 134px, 0);
+    }
+
+    60% {
+        clip: rect(102px, 9999px, 63px, 0);
+    }
+
+    80% {
+        clip: rect(32px, 9999px, 85px, 0);
+    }
+
+    100% {
+        clip: rect(59px, 9999px, 122px, 0);
+    }
+}
+
+@keyframes glitch-anim-2 {
+    0% {
+        clip: rect(104px, 9999px, 20px, 0);
+    }
+
+    20% {
+        clip: rect(8px, 9999px, 98px, 0);
+    }
+
+    40% {
+        clip: rect(56px, 9999px, 34px, 0);
+    }
+
+    60% {
+        clip: rect(98px, 9999px, 10px, 0);
+    }
+
+    80% {
+        clip: rect(23px, 9999px, 5px, 0);
+    }
+
+    100% {
+        clip: rect(78px, 9999px, 114px, 0);
+    }
+}
+
+
+/* =========================================
+   6. NARRATIVE SECTION
+   ========================================= */
+.narrative-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /* Text on right */
+}
+
+.narrative-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--medical-white);
+}
+
+.narrative-text {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin-left: auto;
+}
+
+.tech-lines {
+    width: 100px;
+    height: 4px;
+    background: var(--biolum-cyan);
+    margin-top: 30px;
+    margin-left: auto;
+    box-shadow: 0 0 10px var(--biolum-cyan);
+}
+
+
+/* =========================================
+   7. ABOUT (POLAROIDS)
+   ========================================= */
+.about-section {
+    pointer-events: none;
+    /* Let clicks pass through except on interactive items */
+}
+
+.polaroid-container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    pointer-events: auto;
+}
+
+.polaroid-card {
+    position: absolute;
+    background: #fff;
+    padding: 10px 10px 30px 10px;
+    color: #000;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.polaroid-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: grayscale(80%);
+}
+
+.polaroid-card:hover {
+    z-index: 20;
+    transform: scale(1.1) rotate(0deg) !important;
+}
+
+.polaroid-card:hover img {
+    filter: grayscale(0%);
+}
+
+.caption {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* Staggered positions */
+.p-1 {
+    top: 10%;
+    left: 5%;
+    transform: rotate(-5deg);
+    width: 280px;
+}
+
+.p-2 {
+    bottom: 20%;
+    right: 10%;
+    transform: rotate(8deg);
+    width: 220px;
+}
+
+.text-block-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-block-center h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: var(--biolum-cyan);
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   8. FOOTER (FINALE)
+   ========================================= */
+.footer-section {
+    display: flex;
+    justify-content: flex-start;
+    /* Align to top primarily, then push down */
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    padding-top: 15vh;
+    /* Push down slightly from top */
+    padding-bottom: 30vh;
+    /* PUSH UP significantly to clear head */
+}
+
+/* Gradient Overlay to fade into footer */
+.footer-overlay-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--deep-void) 20%, transparent 100%);
+    z-index: -1;
+}
+
+.footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 6vw, 80px);
+    line-height: 1;
+    margin-bottom: 30px;
+}
+
+.visualizer-container-large {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    /* REDUCED from 60% */
+    /* Increased height */
+    z-index: 0;
+    /* Above -1 gradient, below content (content is strict flex so might need check) */
+    /* Let's try Z-Index 1 but pointer-events none so buttons work */
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+    /* Brighter */
+    mix-blend-mode: screen;
+    /* Glow overlay */
+}
+
+#audio-visualizer {
+    width: 100%;
+    height: 100%;
+}
+
+.liquid-btn {
+    position: relative;
+    padding: 20px 40px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--biolum-cyan);
+    background: transparent;
+    border: 2px solid var(--biolum-cyan);
+    cursor: pointer;
+    /* fallback */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 20;
+}
+
+.liquid-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--biolum-cyan);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.liquid-btn:hover {
+    color: var(--deep-void);
+    box-shadow: 0 0 20px var(--biolum-cyan);
+}
+
+.liquid-btn:hover::before {
+    left: 0;
+}
+
+/* SOCIAL LINKS */
+.social-links-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.social-link {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--medical-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.social-link:hover {
+    opacity: 1;
+    color: var(--biolum-cyan);
+    border-bottom: 1px solid var(--biolum-cyan);
+    transform: translateY(-5px);
+}
+
+
+/* SOCIAL LINKS */
+.social-links-container {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.social-link {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--medical-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.social-link:hover {
+    opacity: 1;
+    color: var(--biolum-cyan);
+    border-bottom: 1px solid var(--biolum-cyan);
+    transform: translateY(-5px);
+}
+
+/* =========================================
+   MAGIC UI FEATURES
+   ========================================= */
+
+/* 1. VIDEO TEXT MASK (WHITE MODE: SCREEN BLEND) */
+.video-text-section {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 50px 0;
+    background: #fff;
+    /* White background around the element */
+}
+
+.video-text-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    /* White Container */
+}
+
+.video-bg {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    /* No Mix Blend on video, it's the base */
+}
+
+.video-text-mask {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(4rem, 15vw, 200px);
+    font-weight: 900;
+    padding: 20px;
+    text-align: center;
+    line-height: 0.9;
+    letter-spacing: -5px;
+
+    /* THE MAGICAL COMBO FOR WHITE SURROUND + VIDEO TEXT */
+    background-color: #fff;
+    /* White Overlay */
+    color: #000;
+    /* Black Text */
+    mix-blend-mode: screen;
+    /* 
+       Logic:
+       Top Layer (This H2): White (#FFF) | Black (#000)
+       Bottom Layer (Video): Pixels
+       Blend Mode: SCREEN
+       
+       Math: C_result = 1 - (1 - C_top) * (1 - C_bot)
+       
+       Case White (Background):
+       1 - (1 - 1) * (1 - C_bot) = 1 - 0 = 1 (White)
+       -> White stays White -> Creates the opaque background.
+       
+       Case Black (Text):
+       1 - (1 - 0) * (1 - C_bot) = 1 - 1 * (1 - C_bot) = C_bot (Video)
+       -> Black becomes Transparent -> Reveals the Video.
+
+       PERFECT KNOCKOUT.
+    */
+}
+
+/* 2. ANIMATED LIST (NOTIFICATIONS) */
+.animated-list-wrapper {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    width: 300px;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.list-header {
+    font-family: 'Cinzel', serif;
+    color: var(--biolum-cyan);
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--biolum-cyan);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.animated-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-item {
+    background: rgba(10, 25, 41, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 245, 212, 0.2);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform-origin: top center;
+    animation: slideIn 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.notif-icon {
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.notif-content h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--medical-white);
+}
+
+.notif-content p {
+    font-size: 0.75rem;
+    margin: 0;
+    color: rgba(224, 251, 252, 0.6);
+}
+
+/* NAV UPDATE: LEFT ALIGNED & ROW */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    /* Spread Logo Left, Links Right */
+    align-items: center;
+    padding: 20px 40px;
+    /* More side padding */
+    width: 100%;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: row;
+    /* Side by Side */
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
+    /* Space between logo and name */
+}
+
+.brand-logo {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    /* Circle */
+    border: 2px solid var(--biolum-cyan);
+    margin: 0;
+    /* managed by gap */
+    box-shadow: 0 0 15px rgba(0, 245, 212, 0.5);
+}
+
+.brand-name {
+    font-family: 'Cinzel', serif;
+    color: var(--medical-white);
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--biolum-cyan);
+    text-align: left;
+}
+
+.nav-links {
+    position: relative;
+    /* Normal flow */
+    right: auto;
+    top: auto;
+    transform: none;
+    display: flex;
+    gap: 30px;
+}
+
+/* 3. MARQUEE SCROLL */
+.marquee-section {
+    width: 100%;
+    overflow: hidden;
+    background: var(--midnight-blue);
+    padding: 20px 0;
+    margin-top: 50px;
+    border-top: 1px solid rgba(0, 245, 212, 0.2);
+    border-bottom: 1px solid rgba(0, 245, 212, 0.2);
+    position: relative;
+    z-index: 20;
+}
+
+.marquee-track {
+    display: flex;
+    width: fit-content;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-content {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    /* Massive text */
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    padding-right: 50px;
+    letter-spacing: 2px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* 4. NUMBER TICKERS */
+.stats-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    justify-content: flex-end;
+}
+
+.stat-item {
+    text-align: right;
+}
+
+.number-ticker {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--biolum-cyan);
+    display: inline-block;
+    min-width: 60px;
+}
+
+.stat-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--medical-white);
+    letter-spacing: 1px;
+}
+
+/* 5. HYPER TEXT (Glitchy Nav) */
+.hyper-text {
+    cursor: default;
+    /* Logic in JS */
+}
+
+/* RESPONSIVE UPDATES FOR MAGIC UI */
+@media (max-width: 768px) {
+    .video-text-mask {
+        font-size: 15vw;
+        /* Adjust for mobile */
+    }
+
+    .animated-list-wrapper {
+        position: relative;
+        width: 100%;
+        bottom: auto;
+        left: auto;
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+
+    .marquee-content {
+        font-size: 2.5rem;
+    }
+
+    .stats-container {
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: none;
+        /* Hide standard links on mobile, logo is enough */
+    }
+
+    .logo-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .brand-name {
+        font-size: 1.4rem;
+    }
+
+    /* MOBILE OVERFLOW FIX */
+    .typing-text {
+        white-space: normal !important;
+        /* Allow wrapping */
+        word-break: break-word;
+        font-size: 1.1rem;
+        /* readable size */
+        line-height: 1.5;
+    }
+
+    .brand-logo {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+/* STACKED LAYOUT FOR MOBILE */
+.scrolly-section {
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Push content to bottom */
+    padding: 80px 5vw 40px 5vw;
+    text-align: center;
+    /* Ensure minimum height to fit stacked content without overlap */
+    min-height: 100vh;
+}
+
+.safe-zone-left,
+.safe-zone-right {
+    position: relative;
+    /* Unlock from absolute positioning */
+    width: 100%;
+    top: auto;
+    left: auto;
+    right: auto;
+    margin-bottom: 20px;
+    z-index: 20;
+    /* Semi-transparent background for legibility */
+    background: rgba(2, 11, 20, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 245, 212, 0.2);
+}
+
+.bottom-align {
+    position: relative;
+    bottom: auto;
+    margin-top: auto;
+    /* Push to bottom if flex container allows */
+}
+
+/* TYPOGRAPHY BOOST */
+.editorial-title {
+    font-size: 3rem;
+    font-weight: 900;
+    /* Extra Bold */
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    /* Strong contrast */
+}
+
+.editorial-sub {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--medical-white);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+}
+
+.narrative-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.nav-links {
+    display: none;
+}
+
+/* GALLERY STACK */
+.polaroid-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    top: auto;
+    left: auto;
+    margin-top: 50px;
+    overflow: visible;
+    /* Prevent cutting off shadows */
+}
+
+.polaroid-card {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: rotate(0deg) !important;
+    width: 90%;
+    margin: 0 auto;
+    transform-origin: center;
+}
+
+/* FOOTER MOBILE */
+.footer-title {
+    font-size: 2rem;
+}
+
+.liquid-btn {
+    padding: 15px 30px;
+    font-size: 0.9rem;
+}
+
+/* Visualizer Visibility */
+.visualizer-container-large {
+    opacity: 0.8;
+    /* Make it more visible on mobile */
+    height: 50%;
+}
+}

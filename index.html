@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritesh Dadhich | The Paramedical Archive</title>
+    <meta name="description"
+        content="Portfolio of Ritesh Dadhich. A cinematic journey into Paramedical Science at AIIMS Jodhpur.">
+
+    <!-- Google Fonts: Editorial & Tech -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;500;800&family=Space+Grotesk:wght@300;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="logo.webp" alt="Loading" class="loader-logo">
+            <div class="loading-bar">
+                <div class="progress" id="load-progress"></div>
+            </div>
+            <p class="loading-text">INITIALIZING SEQUENCE <span id="percent">0%</span></p>
+        </div>
+    </div>
+
+    <!-- Magnetic Cursor -->
+    <div class="cursor-dot-outline"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Canvas Sequence Background -->
+    <canvas id="scroll-sequence"></canvas>
+
+    <!-- Main Content Wrapper -->
+    <main class="content-wrapper">
+        <!-- Navigation (Minimal) -->
+        <nav class="glass-nav">
+            <div class="nav-container">
+                <a href="#" class="logo-container">
+                    <img src="logo.webp" alt="AIIMS Jodhpur" class="brand-logo">
+                    <span class="brand-name">RITESH DADHICH</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#hero" class="magnetic-btn">Archive</a></li>
+                    <li><a href="#about" class="magnetic-btn">Profile</a></li>
+                    <li><a href="#contact" class="magnetic-btn">Signal</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Section 1: Hero (The Performance) -->
+        <section id="hero" class="scrolly-section hero-section">
+            <div class="safe-zone-left">
+                <h1 class="editorial-title glitch-text" data-text="HEALING">HEALING</h1>
+                <h1 class="editorial-sub outline-text">HANDS</h1>
+            </div>
+            <div class="safe-zone-right bottom-align">
+                <p class="cinematic-desc">
+                    ARTISTIC SOUL.<br>
+                    PARAMEDICAL SCIENCE<br>
+                    <span class="highlight-cyan">AIIMS JODHPUR</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 2: Narrative (The Bridge) -->
+        <section id="narrative" class="scrolly-section narrative-section">
+            <div class="safe-zone-right">
+                <h2 class="narrative-heading">THE BRIDGE</h2>
+                <div class="typing-container">
+                    <p class="narrative-text typing-text"
+                        data-text="Between diagnosis and recovery lies precision. We are the shadow guardians.">
+                        <!-- JS will type here -->
+                    </p>
+                </div>
+                <!-- Number Ticker Stats -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <span class="number-ticker" data-value="300">0</span>+
+                        <span class="stat-label">Patients Served</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number-ticker" data-value="24">0</span>/7
+                        <span class="stat-label">Care</span>
+                    </div>
+                </div>
+                <!-- Decorative elements -->
+                <div class="tech-lines"></div>
+            </div>
+        </section>
+
+        <!-- Section 2.5: Video Text (Magic UI) -->
+        <section class="video-text-section">
+            <div class="video-text-container">
+                <video autoplay muted loop playsinline class="video-bg">
+                    <source src="https://cdn.magicui.design/ocean-small.webm" type="video/webm">
+                </video>
+                <h2 class="video-text-mask">AIIMS JODHPUR</h2>
+            </div>
+        </section>
+
+        <!-- Section 3: Campus Life (Polaroids) -->
+        <section id="about" class="scrolly-section about-section">
+            <div class="polaroid-container">
+                <div class="polaroid-card p-1 tilt-left">
+                    <img src="1594113795aiims campus.webp" alt="AIIMS Campus">
+                    <span class="caption">The Foundation</span>
+                </div>
+                <div class="polaroid-card p-2 tilt-right">
+                    <img src="1565328822acadddd.webp" alt="Lab Work">
+                    <span class="caption">The Lab</span>
+                </div>
+
+                <!-- Animated List (Notifications) -->
+                <div class="animated-list-wrapper">
+                    <h3 class="list-header">LIVE UPDATES</h3>
+                    <div id="animated-list" class="animated-list">
+                        <!-- JS injects items here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.5: Scroll Velocity Marquee -->
+        <div class="marquee-section">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    PARAMEDICAL SCIENCE &nbsp;&bull;&nbsp; RADIOLOGY &nbsp;&bull;&nbsp; ANESTHESIA &nbsp;&bull;&nbsp;
+                    CARDIOLOGY &nbsp;&bull;&nbsp; NEUROLOGY &nbsp;&bull;&nbsp;
+                    PARAMEDICAL SCIENCE &nbsp;&bull;&nbsp; RADIOLOGY &nbsp;&bull;&nbsp; ANESTHESIA &nbsp;&bull;&nbsp;
+                    CARDIOLOGY &nbsp;&bull;&nbsp; NEUROLOGY &nbsp;&bull;&nbsp;
+                </div>
+                <!-- Duplicate for smoother seamless loop if needed, css handles it -->
+            </div>
+        </div>
+
+        <!-- Section 4: Footer (Finale) -->
+        <section id="contact" class="scrolly-section footer-section">
+            <div class="footer-overlay-gradient"></div>
+            <div class="footer-content">
+                <h2 class="footer-title">CREATE <br><span class="outline-text">REALITY</span></h2>
+
+                <div class="social-links-container">
+                    <a href="#" class="social-link magnetic-btn">INSTAGRAM</a>
+                    <a href="tel:+919876543210" class="social-link magnetic-btn">PHONE CALL</a>
+                    <a href="https://wa.me/919876543210" class="social-link magnetic-btn">WHATSAPP</a>
+                </div>
+
+                <button class="liquid-btn glitch-hover">INITIALIZE CONTACT</button>
+
+                <div class="credits">
+                    <p>RITESH DADHICH // PARAMEDICAL SCIENCE</p>
+                </div>
+
+                <div class="visualizer-container-large">
+                    <canvas id="audio-visualizer"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
