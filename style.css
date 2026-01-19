@@ -406,6 +406,7 @@ body {
     line-height: 1.5;
     max-width: 400px;
     margin-left: auto;
+    word-spacing: 12px;
 }
 
 .tech-lines {
