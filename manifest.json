@@ -1,0 +1,32 @@
+{
+  "name": "Ritesh Dadhich - Paramedical Professional",
+  "short_name": "Ritesh Dadhich",
+  "description": "Portfolio of Ritesh Dadhich - Paramedical Science Professional at AIIMS Jodhpur",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020b14",
+  "theme_color": "#00f5d4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["medical", "portfolio", "professional"],
+  "screenshots": [
+    {
+      "src": "screenshot.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ]
+}

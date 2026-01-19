@@ -4,21 +4,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritesh Dadhich | The Paramedical Archive</title>
-    <meta name="description"
-        content="Portfolio of Ritesh Dadhich. A cinematic journey into Paramedical Science at AIIMS Jodhpur.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Google Fonts: Editorial & Tech -->
+    <!-- Primary Meta Tags -->
+    <title>Ritesh Dadhich | Paramedical Science | AIIMS Jodhpur</title>
+    <meta name="title" content="Ritesh Dadhich | Paramedical Science Professional">
+    <meta name="description"
+        content="Ritesh Dadhich - Expert in Radiology, Anesthesia & Emergency Response. Paramedical Science at AIIMS Jodhpur. 300+ lives impacted with precision and compassion.">
+    <meta name="keywords"
+        content="Ritesh Dadhich, Paramedical Science, AIIMS Jodhpur, Radiology, Anesthesia, Emergency Response, Medical Technology, Lab Technician">
+    <meta name="author" content="Ritesh Dadhich">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://riteshdadhich.com/">
+    <meta property="og:title" content="Ritesh Dadhich | Paramedical Science Professional">
+    <meta property="og:description"
+        content="Expert in Radiology, Anesthesia & Emergency Response. AIIMS Jodhpur. 300+ lives impacted.">
+    <meta property="og:image" content="https://riteshdadhich.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://riteshdadhich.com/">
+    <meta property="twitter:title" content="Ritesh Dadhich | Paramedical Science Professional">
+    <meta property="twitter:description"
+        content="Expert in Radiology, Anesthesia & Emergency Response. AIIMS Jodhpur. 300+ lives impacted.">
+    <meta property="twitter:image" content="https://riteshdadhich.com/og-image.jpg">
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#00f5d4">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Performance: Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;500;800&family=Space+Grotesk:wght@300;700&display=swap"
         rel="stylesheet">
 
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Person",
+      "name": "Ritesh Dadhich",
+      "url": "https://riteshdadhich.com",
+      "image": "https://riteshdadhich.com/profile.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/riteshdadhich",
+        "https://twitter.com/riteshdadhich"
+      ],
+      "jobTitle": "Paramedical Science Professional",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "AIIMS Jodhpur"
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "AIIMS Jodhpur"
+      },
+      "knowsAbout": ["Radiology", "Anesthesia", "Emergency Response", "Lab Technology", "Patient Care", "Medical Diagnostics"]
+    }
+    </script>
 </head>
 
 <body>
+    <!-- Skip to main content (A11Y) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Voice Command Indicator -->
+    <div class="voice-indicator" id="voiceIndicator">
+        <div class="voice-pulse"></div>
+        <span class="voice-text">Listening...</span>
+    </div>
+
+
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+    </button>
+
+    <!-- Share Trigger Button -->
+    <button class="share-trigger" id="shareTrigger" aria-label="Share portfolio">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="18" cy="5" r="3" />
+            <circle cx="6" cy="12" r="3" />
+            <circle cx="18" cy="19" r="3" />
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+        </svg>
+    </button>
+
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-content">
@@ -34,8 +120,27 @@
     <div class="cursor-dot-outline"></div>
     <div class="cursor-dot"></div>
 
+    <!-- AURA FARMING: Grain & Fog -->
+    <div class="grain-overlay"></div>
+    <div class="fog-container">
+        <div class="fog-img fog-img-first"></div>
+        <div class="fog-img fog-img-second"></div>
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar"></div>
+
+    <!-- Particle System Container -->
+    <div id="particles-container"></div>
+
     <!-- Canvas Sequence Background -->
     <canvas id="scroll-sequence"></canvas>
+
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="fm-freemusic-inspiring-optimistic-upbeat-energetic-guitar-rhythm(chosic.com).mp3"
+            type="audio/mpeg">
+    </audio>
 
     <!-- Main Content Wrapper -->
     <main class="content-wrapper">
@@ -57,21 +162,33 @@
         <!-- Section 1: Hero (The Performance) -->
         <section id="hero" class="scrolly-section hero-section">
             <div class="safe-zone-left">
-                <h1 class="editorial-title glitch-text" data-text="HEALING">HEALING</h1>
+                <h1 class="editorial-title glitch-text aura-pulse" data-text="HEALING">HEALING</h1>
                 <h1 class="editorial-sub outline-text">HANDS</h1>
+
+                <!-- Live Stats Counter -->
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" data-target="5">0</span>
+                        <span class="hero-stat-label">Years Experience</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" data-target="300">0</span>
+                        <span class="hero-stat-plus">+</span>
+                        <span class="hero-stat-label">Lives Touched</span>
+                    </div>
+                </div>
             </div>
-            <div class="safe-zone-right bottom-align">
-                <p class="cinematic-desc">
-                    ARTISTIC SOUL.<br>
-                    PARAMEDICAL SCIENCE<br>
-                    <span class="highlight-cyan">AIIMS JODHPUR</span>
-                </p>
             </div>
         </section>
 
         <!-- Section 2: Narrative (The Bridge) -->
         <section id="narrative" class="scrolly-section narrative-section">
             <div class="safe-zone-right">
+                <p class="cinematic-desc" style="margin-bottom: 20px;">
+                    ARTISTIC SOUL.<br>
+                    PARAMEDICAL SCIENCE<br>
+                    <span class="highlight-cyan">AIIMS JODHPUR</span>
+                </p>
                 <h2 class="narrative-heading">THE BRIDGE</h2>
                 <div class="typing-container">
                     <p class="narrative-text typing-text"
@@ -92,6 +209,134 @@
                 </div>
                 <!-- Decorative elements -->
                 <div class="tech-lines"></div>
+            </div>
+        </section>
+
+        <!-- Section 2.2: Expertise Matrix -->
+        <section id="expertise" class="scrolly-section expertise-section">
+            <div class="section-container">
+                <h2 class="section-title glitch-text" data-text="CORE COMPETENCIES">CORE COMPETENCIES</h2>
+                <div class="expertise-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon">🔬</div>
+                        <div class="skill-info">
+                            <h3>RADIOLOGY</h3>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-skill="95"></div>
+                            </div>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">💉</div>
+                        <div class="skill-info">
+                            <h3>ANESTHESIA</h3>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-skill="92"></div>
+                            </div>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">⚡</div>
+                        <div class="skill-info">
+                            <h3>EMERGENCY RESPONSE</h3>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-skill="98"></div>
+                            </div>
+                            <span class="skill-percent">98%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">🧪</div>
+                        <div class="skill-info">
+                            <h3>LAB TECHNOLOGY</h3>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-skill="88"></div>
+                            </div>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">🏥</div>
+                        <div class="skill-info">
+                            <h3>PATIENT CARE</h3>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-skill="96"></div>
+                            </div>
+                            <span class="skill-percent">96%</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">📊</div>
+                        <div class="skill-info">
+                            <h3>DIAGNOSTICS</h3>
+                            <div class="skill-bar">
+                                <div class="skill-fill" data-skill="94"></div>
+                            </div>
+                            <span class="skill-percent">94%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2.3: Philosophy Statement -->
+        <section class="philosophy-section">
+            <div class="philosophy-container">
+                <div class="philosophy-quote">
+                    <span class="quote-mark">"</span>
+                    <h2 class="philosophy-text">
+                        PRECISION IN ACTION.<br>
+                        COMPASSION IN CARE.<br>
+                        <span class="highlight-cyan">INNOVATION IN HEALING.</span>
+                    </h2>
+                    <span class="quote-mark">"</span>
+                </div>
+                <div class="medical-cross"></div>
+            </div>
+        </section>
+
+        <!-- Section 2.4: Journey Timeline -->
+        <section id="timeline" class="scrolly-section timeline-section">
+            <div class="section-container">
+                <h2 class="section-title">MEDICAL JOURNEY</h2>
+                <div class="timeline-track">
+                    <div class="timeline-item" data-year="2020">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3>AIIMS JODHPUR</h3>
+                            <p>Joined Paramedical Science Program</p>
+                            <span class="timeline-year">2024</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item" data-year="2024">
+                        <div class="timeline-node"></div>
+                        <div class="timeline-content">
+                            <h3>ADVANCED RADIOLOGY</h3>
+                            <p>Certification in Advanced Imaging Techniques</p>
+                            <span class="timeline-year">2024</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="timeline-item" data-year="2025">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content">
+                        <h3>MILESTONE ACHIEVED</h3>
+                        <p>300+ Patients Served Successfully</p>
+                        <span class="timeline-year">2025</span>
+                    </div>
+                </div>
+                <div class="timeline-item" data-year="2026">
+                    <div class="timeline-node"></div>
+                    <div class="timeline-content">
+                        <h3>LEADERSHIP ROLE</h3>
+                        <p>Senior Lab Technician & Mentor</p>
+                        <span class="timeline-year">2026</span>
+                    </div>
+                </div>
+            </div>
             </div>
         </section>
 
@@ -119,9 +364,85 @@
 
                 <!-- Animated List (Notifications) -->
                 <div class="animated-list-wrapper">
-                    <h3 class="list-header">LIVE UPDATES</h3>
-                    <div id="animated-list" class="animated-list">
-                        <!-- JS injects items here -->
+                    <!-- Download Resume Button -->
+                    <a href="#" class="download-resume-btn" id="downloadResume">
+                        <svg class="download-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+                        </svg>
+                        <span>DOWNLOAD RESUME</span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.2: Testimonials / Impact -->
+        <section id="testimonials" class="scrolly-section testimonials-section">
+            <div class="section-container">
+                <h2 class="section-title">VERIFIED IMPACT</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="patient-id">PATIENT ID: ████-2025-█████</div>
+                        <div class="status-tag recovered">STATUS: RECOVERED</div>
+                        <div class="testimonial-text">
+                            "The precision and care demonstrated in the radiology department was exceptional.
+                            Quick diagnosis saved crucial time."
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="patient-id">PATIENT ID: ████-2025-█████</div>
+                        <div class="status-tag recovered">STATUS: RECOVERED</div>
+                        <div class="testimonial-text">
+                            "Compassionate care combined with cutting-edge technology.
+                            The lab results were accurate and timely."
+                        </div>
+                        <div class="rating">⭐⭐⭐⭐⭐</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.3: Case Studies -->
+        <section id="case-studies" class="scrolly-section case-studies-section">
+            <div class="section-container">
+                <h2 class="section-title">MISSION ARCHIVES</h2>
+                <div class="cases-grid">
+                    <div class="case-card">
+                        <div class="case-label">OPERATION: PRECISION DIAGNOSTICS</div>
+                        <h3>Complex Radiology Analysis</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-value">98%</span>
+                                <span class="stat-label">Accuracy</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">24h</span>
+                                <span class="stat-label">Turnaround</span>
+                            </div>
+                        </div>
+                        <p>Advanced imaging techniques identified rare condition,
+                            enabling early intervention and positive patient outcome.</p>
+                        <div class="case-tag">RADIOLOGY</div>
+                    </div>
+                    <div class="case-card">
+                        <div class="case-label">OPERATION: PATIENT CARE EXCELLENCE</div>
+                        <h3>Long-term Recovery Support</h3>
+                        <div class="case-stats">
+                            <div class="stat">
+                                <span class="stat-value">12wks</span>
+                                <span class="stat-label">Duration</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-value">Full</span>
+                                <span class="stat-label">Recovery</span>
+                            </div>
+                        </div>
+                        <p>Comprehensive monitoring and personalized care protocols
+                            resulted in complete recovery with no complications.</p>
+                        <div class="case-tag">CARE</div>
                     </div>
                 </div>
             </div>
@@ -140,6 +461,57 @@
             </div>
         </div>
 
+        <!-- Section 3.6: Achievements & Certifications -->
+        <section id="achievements" class="scrolly-section achievements-section">
+            <div class="section-container">
+                <h2 class="section-title">ACHIEVEMENTS UNLOCKED</h2>
+                <div class="badges-grid">
+                    <div class="badge-item" data-achievement="cert-1">
+                        <div class="hexagon">
+                            <span class="badge-icon">🏆</span>
+                        </div>
+                        <h4>Excellence Award</h4>
+                        <p>Best Paramedical Student 2025</p>
+                    </div>
+                    <div class="badge-item" data-achievement="cert-2">
+                        <div class="hexagon">
+                            <span class="badge-icon">📜</span>
+                        </div>
+                        <h4>Advanced Radiology</h4>
+                        <p>AIIMS Certification</p>
+                    </div>
+                    <div class="badge-item" data-achievement="cert-3">
+                        <div class="hexagon">
+                            <span class="badge-icon">⚡</span>
+                        </div>
+                        <h4>Emergency Response</h4>
+                        <p>Critical Care Specialist</p>
+                    </div>
+                    <div class="badge-item" data-achievement="cert-4">
+                        <div class="hexagon">
+                            <span class="badge-icon">🎯</span>
+                        </div>
+                        <h4>Lab Excellence</h4>
+                        <p>Top Performer Award</p>
+                    </div>
+                    <div class="badge-item" data-achievement="cert-5">
+                        <div class="hexagon">
+                            <span class="badge-icon">💉</span>
+                        </div>
+                        <h4>Anesthesia Expert</h4>
+                        <p>Advanced Training</p>
+                    </div>
+                    <div class="badge-item" data-achievement="cert-6">
+                        <div class="hexagon">
+                            <span class="badge-icon">🌟</span>
+                        </div>
+                        <h4>Patient Care Hero</h4>
+                        <p>300+ Lives Impacted</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Section 4: Footer (Finale) -->
         <section id="contact" class="scrolly-section footer-section">
             <div class="footer-overlay-gradient"></div>
@@ -152,7 +524,32 @@
                     <a href="https://wa.me/919876543210" class="social-link magnetic-btn">WHATSAPP</a>
                 </div>
 
-                <button class="liquid-btn glitch-hover">INITIALIZE CONTACT</button>
+                <!-- Contact Form -->
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="FULL NAME" required>
+                            <span class="form-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="EMAIL ADDRESS" required>
+                            <span class="form-error"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="SUBJECT" required>
+                        <span class="form-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="YOUR MESSAGE" required></textarea>
+                        <span class="form-error"></span>
+                    </div>
+                    <button type="submit" class="form-submit-btn">
+                        <span class="btn-text">TRANSMIT MESSAGE</span>
+                        <span class="btn-loader"></span>
+                    </button>
+                    <div class="form-success">✓ MESSAGE TRANSMITTED SUCCESSFULLY</div>
+                </form>
 
                 <div class="credits">
                     <p>RITESH DADHICH // PARAMEDICAL SCIENCE</p>
@@ -162,6 +559,55 @@
             </div>
         </section>
     </main>
+
+    <!-- Share Overlay Modal -->
+    <div class="share-overlay" id="shareOverlay">
+        <div class="share-content">
+            <button class="share-close" id="shareClose">×</button>
+            <h3>Share Portfolio</h3>
+            <div class="share-buttons-grid">
+                <button class="share-btn-modal" data-platform="twitter">
+                    <svg width="24" height="24" fill="currentColor">
+                        <path
+                            d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+                    </svg>
+                    <span>Twitter</span>
+                </button>
+                <button class="share-btn-modal" data-platform="linkedin">
+                    <svg width="24" height="24" fill="currentColor">
+                        <path
+                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                    <span>LinkedIn</span>
+                </button>
+                <button class="share-btn-modal" data-platform="whatsapp">
+                    <svg width="24" height="24" fill="currentColor">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </button>
+                <button class="share-btn-modal" data-platform="copy">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    <span>Copy Link</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+        <div class="lightbox-content">
+            <img id="lightboxImg" src="" alt="">
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+    </div>
 
     <script src="main.js"></script>
 </body>
